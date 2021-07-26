@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title> First Approval  </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <style>
+          #adddesign {
+              margin: 25px;
+              width: 75%;
+             
+              padding: 10px;
+          }
+          body {
+  background-image: url("images/fondecran3.jpg");
+}
+
+#but{
+text-align: center; 
+margin: auto;
+display: flex;
+justify-content: center;
+display: grid 
+}
+tr {
+ 
+    border: 1px solid lightblue;
+
+}
+          thead {
+ 
+  background-color: lightgrey;
+}
+    td:nth-of-type(16) {
+
+display: none;
+
+}
+
+td:nth-of-type(17) {
+
+display: none;
+
+}
+
+td:nth-of-type(18) {
+
+display: none;
+
+}
+
+
+td:nth-of-type(19) {
+
+display: none;
+
+}
+td:nth-of-type(20) {
+
+display: none;
+
+}
+      </style>
+</head>
+<body>
+  <a href="login.html" style="text-align: right;" >Log out </a>
+    <fieldset class="row g-3" id="adddesign">
+        <legend>&nbsp;&nbsp;<h3 style="text-align: center; color: blue;" > Approval of the First Reimbursement </h3></legend>
+    
+        <div class="col-md-3">
+          <label for="inputID" class="form-label">ID </label>
+          <input type="text" class="form-control" id="inputID" disabled>
+        </div>
+        <div class="col-md-3">
+          <label for="inputIdempl" class="form-label">Employee ID</label>
+          <input type="text" class="form-control" id="inputIdempl" disabled >
+        </div>
+        <div class="col-md-3">
+          <label for="inputfirstname" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="inputfirstname" disabled >
+        </div>
+        <div class="col-md-3">
+          <label for="inputlastname" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="inputlastname" disabled >
+        </div>
+
+<!--         second row -->
+
+        <div class="col-md-3">
+          <label for="inputCost" class="form-label">Cost</label>
+          <input type="number" class="form-control" id="inputCost"  >
+        </div>
+        <div class="col-md-3">
+          <label for="inputTime" class="form-label">work time missed</label>
+          <input type="number" class="form-control" id="inputTime"  >
+        </div>
+
+        <div class="col-3">
+          <label for="inputLocation" class="form-label">Location</label>
+          <input type="text" class="form-control" id="inputLocation" >
+        </div>
+
+        <div class="col-3">
+          <label for="inputDescription">Description</label>
+          <input type="text" class="form-control"  id="inputDescription" >
+    
+        </div>
+
+        <!--         third  row -->
+
+        <div class="col-md-3">
+          <label for="inputamountgranted" class="form-label">Amount granted</label>
+          <input type="number" class="form-control" id="inputamountgranted" disabled  >
+        </div>  
+       
+              
+     
+
+     
+
+    <div class="col-md-3">
+      <label for="inputstatus" class="form-label">Status</label>
+       <select id="inputstatus" class="form-select">
+         <option value="2" selected>validated </option>
+         <option value="3"> denied </option>
+        
+                 
+       </select>
+      </div>
+      
+      <div class="col-md-3">
+        <label for="inputEvent" class="form-label">EVent</label>
+         <select id="inputEvent" class="form-select" onchange="tester()">
+           <option value="1" selected>university courses </option>
+           <option value="2"> seminars </option>
+           <option value="3">certification preparation classes </option>
+           <option value="4">certification</option>
+           <option value="5">technical training  </option>
+           <option value="6">Others  </option>
+         </select>
+     </div>
+     <div class="col-md-3">
+      <label for="inputGradingformats" class="form-label">Passing Grade</label>
+       <select id="inputGradingformats" class="form-select">
+         <option value="1" selected>Presentation </option>
+         <option value="2"> Default </option>
+         <option value="3">Approval Email </option>
+         <option value="4">Not yet</option>
+         
+       </select>
+   </div>
+
+   <div class="col-md-6">
+    <label for="inputComment">Comment</label>
+    <textarea class="form-control" placeholder="Comment" id="inputComment" ></textarea>
+
+  </div>
+       <br><br>
+       <br><br>
+       <br><br>
+       <div class="col-12" id="but">
+        <button type="button"  class="btn btn-success" onclick="updateReimbursment()"  style="width: 120px;height: 50px;"> Submit </button>
+      </div>
+      
+    
+      </fieldset>
+   
+     
+    <p id="success"> </p> 
+    
+    <diV>
+      <p id="success"> </p> 
+     
+      <p> <input type="hidden" id="inputevtype"> <input type="hidden" id="inputcost2"> <input type="hidden" id="inputpercentage"> <input type="hidden" id="inputgdformatype"> <input type="hidden" id="inputidposition"> <input type="hidden" id="inputidatevent"> </p>
+      
+    </diV>
+
+    <table class="table table-striped table-bordered table-hover" id="my_table" >
+      <thead > 
+          <th>ID</th>
+          <th>Id Employee </th>
+          <th>Firstname </th>
+          <th>Lastname </th>
+          <th>Email </th>
+          <th> Time missed</th>
+          <th> Location</th>
+          <th> Description</th>
+          <th> Entrydate</th>
+          <th>Cost </th>
+          <th>Date event </th>
+          <th> Amount granted</th>
+          <th> Event</th>
+          <th> Gradingformats</th>
+          <th> Select</th>
+         
+      </thead>
+      
+      <tbody id="mytable"> 
+          
+      
+      </tbody>
+              
+      </table>
+</body>
+
+
+
+<script>
+// Start Jva Script
+
+  viewdata();
+
+  
+function tester(){
+
+let cost = document.getElementById("inputCost");
+let test= document.getElementById("inputevtype");
+let percent= document.getElementById("inputpercentage");
+
+let cost2 = document.getElementById("inputcost2")
+let evtest =Number(document.getElementById("inputEvent").value);
+
+//if (cost.value!=cost2.value) {
+
+     // document.getElementById("success").innerHTML=" pas egal"
+     //let rep=(Number(cost.value)*Number(percent.value))/100
+     // document.getElementById("inputamountgranted").value=rep
+
+   //  }
+
+   console.log("eveet  debut test")
+if (evtest==1) {
+  let rep=(Number(cost.value)*80)/100
+      document.getElementById("inputamountgranted").value=rep
+      console.log("eveet test")
+      console.log(evtest)
+}
+
+      else if (evtest==2) {
+  let rep=(Number(cost.value)*60)/100
+      document.getElementById("inputamountgranted").value=rep
+
+}
+
+else if (evtest==3) {
+  let rep=(Number(cost.value)*75)/100
+      document.getElementById("inputamountgranted").value=rep
+
+}
+
+else if (evtest==4) {
+  let rep=(Number(cost.value)*100)/100
+      document.getElementById("inputamountgranted").value=rep
+
+}
+else if (evtest==5) {
+  let rep=(Number(cost.value)*90)/100
+      document.getElementById("inputamountgranted").value=rep
+
+}
+else if (evtest==6) {
+  let rep=(Number(cost.value)*30)/100
+      document.getElementById("inputamountgranted").value=rep
+
+}
+
+}
+
+
+
+let cost = document.getElementById("inputCost");
+cost.oninput = () => {
+
+        //console.log(cost.value); success
+   
+
+        if (cost.value < 0 || cost.value == "") {
+        
+         cost.value=0;
+        }
+
+    }
+
+    let time = document.getElementById("inputTime");
+    time.oninput = () => {
+
+     //   console.log(time.value);
+
+        if (time.value < 0 || time.value == "") {
+          time.value = 0;
+        }
+
+    }
+
+    let amountgrant = document.getElementById("inputamountgranted");
+    amountgrant.oninput = () => {
+
+     //   console.log(time.value);
+
+        if (amountgrant.value < 0 || amountgrant.value == "") {
+            amountgrant.value = 0;
+        }
+
+    }
+
+  function formatDate(date) {
+    var date=new Date();
+    var day = date.getDate();
+    if (day < 10) {
+        day = "0" + day;
+    }
+    var month = date.getMonth() + 1;
+    if (month < 10) {
+        month = "0" + month;
+    }
+    var year = date.getFullYear();
+    return year + "/" + month + "/" + day;
+}
+
+
+
+function viewdata() {
+  $.ajax({
+
+method:'GET',
+url:'http://localhost:7000/viewreimbursement/1',
+success:function(response){
+    let myarray= []
+    console.log(response)
+myarray=JSON.parse(response);
+//buildtable(myarray)
+var table=document.getElementById("mytable")
+    for(var i=0;i<myarray.length;i++)
+    {
+//var row='<tr> <h3>Name: ${actor.name}</h3></tr>'
+var row =
+                   `<tr id=${i}> <td> ${myarray[i].id_reimbursement}</td>
+                <td> ${myarray[i].id_employee}</td>
+                 <td> ${myarray[i].firstname}</td>
+                 <td> ${myarray[i].Lastname}</td>
+                <td> ${myarray[i].Email}</td>
+                 <td> ${myarray[i].worktimemissed}</td>
+                 <td> ${myarray[i].location}</td>
+                <td> ${myarray[i].description}</td>
+                 <td> ${myarray[i].entrydate}</td>
+                 <td> ${myarray[i].cost}</td>
+                <td> ${myarray[i].dateevent}</td>
+                 <td> ${myarray[i].amountgranted}</td>
+                 <td> ${myarray[i].name_eventtype}</td>
+                 <td> ${myarray[i].name_gradingformats}</td>
+                             
+                 <td>  <button type="button"  class="btn"  > Select </button></td>
+                 <td> ${myarray[i].id_eventtype}</td>
+                 <td> ${myarray[i].id_gradingformats}</td>
+                 <td> ${myarray[i].id_position}</td>
+                 <td> ${myarray[i].dateevent}</td>
+                 <td> ${myarray[i].percentage}</td>
+                </tr>`;
+table.innerHTML += row
+//function show() {
+
+    //console.log('salut yorlein')
+//}  
+
+}
+//end for
+
+
+}
+//success:function
+}
+
+)
+//end ajax
+}
+
+// set value from table to input text
+$(document).ready(function(){
+
+// code to read selected table row cell data (values).
+$("#mytable").on('click','.btn',function(){
+     // get the current row
+     var currentRow=$(this).closest("tr"); 
+     
+    var  idremb=currentRow.find("td:eq(0)").text();    
+     var idempl=currentRow.find("td:eq(1)").text(); 
+     var firstn=currentRow.find("td:eq(2)").text(); 
+     var  lastn=currentRow.find("td:eq(3)").text();    
+     var eml=currentRow.find("td:eq(4)").text(); 
+     var timemiss=currentRow.find("td:eq(5)").text(); 
+
+
+     var  loc=currentRow.find("td:eq(6)").text();    
+     var descript=currentRow.find("td:eq(7)").text(); 
+     var entrydt=currentRow.find("td:eq(8)").text(); 
+     var  cost=currentRow.find("td:eq(9)").text();    
+     var evtdt=currentRow.find("td:eq(10)").text(); 
+     var amtgrant=currentRow.find("td:eq(11)").text();
+     
+     var evt=currentRow.find("td:eq(12)").text(); 
+     var gradform=currentRow.find("td:eq(13)").text();
+
+      var evtype=currentRow.find("td:eq(15)").text(); 
+     var  gdformatype=currentRow.find("td:eq(16)").text(); 
+     var  idpos=currentRow.find("td:eq(17)").text(); 
+     var  dateevt=currentRow.find("td:eq(18)").text(); 
+     var  percentag=currentRow.find("td:eq(19)").text();
+    
+
+     var data= "ID : "+ idremb +"\n"+"ID Empl : "+ idempl+"\n"+"First Name : "+ firstn+"\n"+"Event : "+ evt+"\n"+"Event Date :"+ evtdt+"\n"+"Description :"+ descript;
+     
+     
+     alert(data);
+//inputIdempl inputlastname inputCost inputTime inputLocation inputDescription inputamountgranted inputEvent inputGradingformats inputComment inputstatus
+    
+     document.getElementById("inputID").value=idremb
+     document.getElementById("inputIdempl").value=idempl
+     document.getElementById("inputfirstname").value=firstn
+     document.getElementById("inputlastname").value=lastn
+
+     document.getElementById("inputCost").value=Number(cost)
+     document.getElementById("inputTime").value=Number(timemiss)
+     document.getElementById("inputLocation").value=loc
+     document.getElementById("inputDescription").value=descript
+
+     document.getElementById("inputamountgranted").value=Number(amtgrant)
+   
+     console.log(evtype)
+     console.log(gdformatype)
+     console.log(inputidposition)
+   //  console.log(inputidateevent)
+      // idempl evtype gdformatype idpos dateevt
+     
+
+     document.getElementById("inputevtype").value=Number(evtype)
+     document.getElementById("inputgdformatype").value=Number(gdformatype)
+     document.getElementById("inputidposition").value=Number(idpos)
+     document.getElementById("inputpercentage").value=Number(percentag)
+     document.getElementById("inputcost2").value=Number(cost)
+     document.getElementById("inputGradingformats").selectedIndex=Number(gdformatype)-1
+     document.getElementById("inputEvent").selectedIndex=Number(evtype)-1
+     //document.getElementById("inputidatevent").value=formatDate(inputidateevent)
+     //document.getElementById("inputidatevent").value=inputidateevent
+ 
+});
+});
+
+ 
+
+
+
+
+    // Function update
+    function updateReimbursment() {
+
+      let amountgrant = document.getElementById("inputamountgranted").value;
+        let gdformatype=document.getElementById("inputgdformatype").value;
+        let stat=Number(document.getElementById("inputstatus").value);
+        let commentval=document.getElementById("inputComment").value;
+
+        if (amountgrant > 1000 ) {
+        document.getElementById("success").style.color='red'
+     document.getElementById("success").innerHTML = "The amount granted  can not exceed  the available reimbursment"
+      
+        
+    }  
+    
+    
+   
+    else if(stat==3)
+    
+    {
+        if (commentval==="") 
+{
+    document.getElementById("success").style.color='red'
+     document.getElementById("success").innerHTML = " Please,provide  the reason for  on the comment area"
+}
+
+else{
+
+        document.getElementById("success").style.color='green'
+     document.getElementById("success").innerHTML = " Reimbursment denied"
+     
+     trueupdate();
+    
+    }
+
+    }
+
+    else {
+trueupdate();
+
+    }
+
+
+    }
+
+
+    function trueupdate(){
+      tester()
+
+console.log("Updating Reimbursment");
+
+      let idreimbursval = Number(document.getElementById("inputID").value);
+let worktimeval = Number(document.getElementById("inputTime").value);
+let locatval = document.getElementById("inputLocation").value;
+let descriptval = document.getElementById("inputDescription").value;
+let costval = Number(document.getElementById("inputCost").value);
+let amountgrantedval = Number(document.getElementById("inputamountgranted").value);
+let statusval = document.getElementById("inputstatus").value;
+let commentval = document.getElementById("inputComment").value;
+
+let idemplval = Number(document.getElementById("inputIdempl").value);
+let evtypeval = Number(document.getElementById("inputevtype").value);
+let gdformatypeval = Number(document.getElementById("inputgdformatype").value);
+let idpositionval =Number( document.getElementById("inputidposition").value);
+let dateventval ="2021-11-15";
+
+//inputevtype inputgdformatype inputidposition inputidatevent
+let gdformatval = Number(document.getElementById("inputGradingformats").value);
+      //let evtval = Number(document.getElementById("inputEvent").value);
+
+
+let xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function () {
+
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+
+                if (JSON.parse(this.responseText)) {
+                  
+                  document.getElementById("success").style.color='green'
+                    document.getElementById("success").innerHTML = "Reimbursment Successfully Updated "
+                   // viewdata();
+
+                    console.log("start reset");
+                  
+                   
+// inputIdempl inputfirstname inputlastname inputCost inputTime inputLocation inputDescription inputamountgranted inputEvent inputGradingformats inputComment inputstatus        
+        
+        document.getElementById("inputIdempl").value="";      
+        document.getElementById("inputID").value="";
+        document.getElementById("inputlastname").value="";
+        document.getElementById("inputfirstname").value="";
+
+        document.getElementById("inputTime").value="";
+        document.getElementById("inputLocation").value="";
+        document.getElementById("inputDescription").value="";
+        document.getElementById("inputCost").value="";
+
+        let statusval1 = document.getElementById("inputstatus");
+      statusval1.selectedIndex = 0;
+      document.getElementById("inputamountgranted").value="";
+        document.getElementById("inputComment").value="";            
+    
+        let event1 = document.getElementById("inputEvent");
+        event1.selectedIndex = 0;
+        let gradingformats1 = document.getElementById("inputGradingformats");
+        gradingformats1.selectedIndex = 0;
+
+                    
+                } else {
+                  document.getElementById("success").style.color='red'
+                    document.getElementById("success").innerHTML = "Reimbursment was not Submitted"
+                }
+            } else if (this.readyState == 4) {
+                document.getElementById("success").innerHTML = "Request was not successfully processed "
+            }
+
+        }
+
+        let url = "http://localhost:7000/reimbursements/"+idreimbursval;
+        xhttp.open("PUT", url, true);
+
+        //xhttp.setRequestHeader('Content-Type', 'application/json');
+
+
+
+let Typeapprovalobj = {
+  id_typeapproval:2,
+  name_typeapproval:"directsupervisor"
+ 
+}
+
+
+
+
+let statusobj = {
+  id_status:statusval,
+  name_status:"validated"
+ 
+}
+
+//inputEvent inputGradingformats
+
+        let eventobj={id_eventtype:document.getElementById("inputEvent").value,
+        name_eventtype:"dep",
+        percentage:evtypeval
+      }
+      
+      let gradingformatsobj = {
+        id_gradingformats:document.getElementById("inputGradingformats").value,
+        //id_gradingformats:gdformatypeval,
+        name_gradingformats:"forma"
+       
+      }
+
+let departmentobj = {
+  id_department:1,
+  name_department:"HR"
+ 
+}
+
+let positionobj = {
+  id_position:idpositionval,
+  name_position:"pos"
+ 
+}
+
+
+
+let employeeobj = {
+  id_employee:idemplval,
+  firstname : "jnn",
+  lastname : "jnn",
+  middlename : "jnn",
+  Phone : "207966533",
+  email :"jnn",
+  address : "207966533",
+  id_department :departmentobj,
+  directsupervisor :3,
+  id_position : positionobj
+
+
+}
+
+
+
+
+
+        let reimbursement = {
+
+          id_reimbursement:idreimbursval,
+          worktimemissed: worktimeval,
+          location: locatval,
+          description: descriptval,
+          cost:costval,
+          amountgranted:amountgrantedval,
+          id_typeapproval:Typeapprovalobj,
+          id_status:statusobj,
+          comment:commentval,
+          id_eventtype:eventobj,
+          id_gradingformats:gradingformatsobj,
+          id_employee:employeeobj,
+          dateevent:"2021-11-15"
+
+        }
+
+        //xhttp.send();
+       xhttp.send(JSON.stringify(reimbursement));
+    }
+
+  
+
+
+</script>
+</html>

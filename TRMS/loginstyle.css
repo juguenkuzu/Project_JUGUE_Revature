@@ -1,0 +1,52 @@
+body {
+   /* background:#ffcc00; */
+    background:gray
+    
+    }
+    
+    .div1 {
+    
+    width:350 px;
+    margin:auto;
+    margin:10 0 0 450px;
+    overflow:hidden;
+    padding :75px;
+    background: gray;
+    }
+    
+    .h2 {
+    
+    text-align:center;
+    padding : 10px;
+    color:#003300;
+    
+    }
+    
+    label {
+    
+    color:white;
+    padding-left:10px;
+    }
+    
+    .inputtext{
+    
+    width:300px;
+    height:30px;
+    border:none;
+    /*border-raduis:2px;*/
+    padding-left:8px;
+    
+    
+    }
+    
+    
+    .logbutton{
+    width:300px;
+    height:30px;
+    border:none;
+     /* border-raduis:10px;*/
+    padding-left:7px;
+    color:black;
+    font-size:16px;
+    
+    }
