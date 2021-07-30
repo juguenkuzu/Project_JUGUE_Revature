@@ -6,28 +6,28 @@ TRMS, or Tuition Reimbursement Management System is a full-stack web application
 
 Technologies Used
 
-Java 
-JavaScript 
-HTML
-CSS
-Javalin
-Hibernate
-JDBC
-JUnit4
-Selenium
-PostgreSQL
+Java ,
+JavaScript ,
+HTML,
+CSS,
+Javalin,
+Hibernate,
+JDBC,
+JUnit4,
+Selenium,
+PostgreSQL.
 
 
 Features
 
-Login Page 
-Reimbursment Request
-Approval of the First Reimbursement
-Approval of the Second Reimbursement
-Approval of the Third Reimbursment
+Login Page ,
+Reimbursment Request,
+Approval of the First Reimbursement,
+Approval of the Second Reimbursement,
+Approval of the Third Reimbursment.
 
 
 Getting Started
 
-Make sure the PostgreSQL Database is running.
+Make sure the PostgreSQL Database is running,
 Make sure Java (App.java) is running.
