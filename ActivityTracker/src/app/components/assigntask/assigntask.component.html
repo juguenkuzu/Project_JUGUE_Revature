@@ -1,0 +1,26 @@
+<div class="container">
+                        
+    <div id="updateparent">
+    
+      <form>
+        <div id="update1">
+          <label for="description">Description</label>
+          <input type="textarea" id="description" name="employeeid" [(ngModel)] = "description" >
+        </div>
+        
+        <div id="update2">
+          <label for="duedate">Due Date</label>
+          <input id="duedate" name="duedate" [ngModel] = " duedate | date:'yyyy-MM-dd'" (ngModelChange)="duedate = $event" type="date" type="date" name="duedate">
+        </div>
+              
+        <div id="update3">
+          <button class="button button1" type="submit" id="add"  (click)= "addTask()">Submit</button>
+        </div>
+      </form>
+    
+    </div>
+    
+        
+    </div>
+    
+    
