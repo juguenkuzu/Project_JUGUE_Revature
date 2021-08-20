@@ -1,6 +1,20 @@
 # ActivityTracker
 
+Activity Tracker is a full-stack web application which allows managers in a company to assign and manage work tasks for their employees. 
+The managers are able to create work tasks for the employees which they are in charge of. 
+These employees can then log in and view their current tasks, when they have completed them they are able to complete that task with a message. 
+The manager is then able to approve or deny the completed task.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
+
+# Technologies Used
+
+Hibernate, Tomcat, Spring, SQL, JavaScript, Java, Spring Test, Angular,Bootstrap,Selenuim,Cucumber,Github,PostgreSQL
+
+# Features
+
+Login ,Forgot password,Create an account,Send Email,Complete task,Assign task,View task,Update task
+
+
 
 ## Development server
 
